@@ -1,0 +1,57 @@
+<div class="flex flex-auto">
+    <form
+        class="flex flex-col flex-auto p-6 pt-10 sm:p-8 sm:pt-10 overflow-y-auto">
+        <!-- Header -->
+        <div class="max-w-3xl">
+            <div class="prose prose-sm max-w-3xl">
+               <h2 class="font-bold md-12">Adicionando nova Alternativa</h2>
+            </div>
+        </div>
+        <br><br>
+        <!-- codAlterPergDemografica -->
+        <div class="flex">
+            <mat-form-field
+              class="flex-auto gt-xs:pr-3" subscriptSizing="dynamic">
+              <mat-label>Codigo da Alternativa</mat-label>
+                <input
+                type="text"
+                class="form-control"
+                id="codAlterPergDemografica"
+                required
+                [(ngModel)]="alternativa.codAlterPergDemografica"
+                name="codAlterPergDemografica"
+                matInput                
+                [autocomplete]="'off'"
+                [placeholder]="'Codigo Alternativa'">
+            </mat-form-field>
+        </div>
+        <br>
+        <!-- descAlterPergDemografica -->
+        <div class="flex">
+          <mat-form-field
+            class="flex-auto gt-xs:pr-3" subscriptSizing="dynamic">
+            <mat-label>Descrição</mat-label>
+              <input
+              type="text"
+              class="form-control"
+              id="descAlterPergDemografica"
+              required
+              [(ngModel)]="alternativa.descAlterPergDemografica"
+              name="descAlterPergDemografica"
+              matInput                
+              [autocomplete]="'off'"
+              [placeholder]="'Descricao'">
+          </mat-form-field>
+        </div>
+        <button (click)="saveAlternativa()"  class="px-6 ml-3"
+        mat-flat-button
+        [color]="'accent'">Submit</button>
+  
+    </form>
+  </div>
+  
+  
+  
+  
+  
+  

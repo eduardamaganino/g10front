@@ -1,0 +1,19 @@
+.custom-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999; /* Garante que o botão fique acima do conteúdo */
+}
+
+.label {
+    display: block;
+    font:
+      1rem 'Fira Sans',
+      sans-serif;
+  }
+  
+  .input,
+  .label {
+    margin: 0.4rem 0;
+  }
+  

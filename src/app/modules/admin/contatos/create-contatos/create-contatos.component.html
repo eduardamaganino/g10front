@@ -1,0 +1,75 @@
+<div class="flex flex-auto">
+    <form
+        class="flex flex-col flex-auto p-6 pt-10 sm:p-8 sm:pt-10 overflow-y-auto ">
+        <!-- Header -->
+        <div class="max-w-3xl">
+            <div class="prose prose-sm max-w-3xl">
+               <h2 class="font-bold md-12">Adicionando novo Contato</h2>
+            </div>
+        </div>
+        <br><br>
+        <!-- email -->
+        <div class="flex">
+            <mat-form-field
+              class="flex-auto gt-xs:pr-3" subscriptSizing="dynamic">
+              <mat-label>Email</mat-label>
+                <input
+                type="text"
+                class="form-control"
+                id="email"
+                required
+                [(ngModel)]="contato.email"
+                name="email"
+                matInput                
+                [autocomplete]="'off'"
+                [placeholder]="'Email'">
+            </mat-form-field>
+        </div>
+        <br>
+        <!-- nome -->
+        <div class="flex">
+          <mat-form-field
+            class="flex-auto gt-xs:pr-3" subscriptSizing="dynamic">
+            <mat-label>Nome</mat-label>
+              <input
+              type="text"
+              class="form-control"
+              id="nome"
+              required
+              [(ngModel)]="contato.nome"
+              name="nome"
+              matInput                
+              [autocomplete]="'off'"
+              [placeholder]="'Nome'">
+          </mat-form-field>
+        </div>
+        <!-- telefone -->
+        <div class="flex">
+            <mat-form-field
+            class="flex-auto gt-xs:pr-3" subscriptSizing="dynamic">
+            <mat-label>Telefone</mat-label>
+              <input
+              type="text"
+              class="form-control"
+              id="telefone"
+              required
+              [(ngModel)]="contato.telefone"
+              name="telefone"
+              matInput                
+              [autocomplete]="'off'"
+              [placeholder]="'Telefone'">
+          </mat-form-field>
+        </div>
+        <button (click)="saveContato()"  class="px-6 ml-3 mb-5"
+        mat-flat-button
+        [color]="'accent'">Submit</button>
+        
+      </form>
+  </div>
+
+  
+  
+  
+  
+  
+  

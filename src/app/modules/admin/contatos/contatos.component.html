@@ -1,0 +1,64 @@
+<div class="absolute inset-0 flex flex-col min-w-0 overflow-hidden">
+
+    <mat-drawer-container
+        class="flex-auto h-full bg-card dark:bg-transparent"
+        >
+        <mat-drawer-content class="flex flex-col">
+
+            <!-- Main -->
+            <div class="flex-auto">
+
+                <!-- Header -->
+                <app-header-list page-title="Contatos" text-search="Search contatos" 
+                button-link="/contatos/create/{{currentContatoID}}" 
+                service="{{this.contatoService}}" current-id="{{currentContatoID}}" [array-to-search]="contatoCollection"></app-header-list>
+                <input #fileInput type="file" style="display: none" (change)="saveCsv()" />
+                <button  class="bg-primary-200 custom-button" mat-flat-button  (click)="fileInput.click()">
+                  <mat-icon [svgIcon]="'heroicons_outline:arrow-circle-down'"></mat-icon>
+                </button>
+
+                <!-- Contacts list -->
+                <div class="relative" style="overflow-y: auto;">
+                    <ng-container *ngFor="let contato of contatoCollection; let i = index">
+                         <!-- Empresas -->
+                      <a class="z-20 flex items-center px-6 py-4 md:px-8 cursor-pointer border-b">
+                        <div class="flex flex-0 items-center justify-center w-10 h-10 rounded-full overflow-hidden">
+                          <div class="z-10 sticky top-0 -mt-px px-6 py-1 md:px-8 font-medium uppercase text-secondary dark:bg-gray-900">
+                            {{contato.nome.charAt(0)}}
+                          </div>
+                          
+                        </div>
+                        <div class="flex flex-1 items-center">
+                          <div class="min-w-0 ml-5 flex-1">
+                            <div class="font-medium leading-5 truncate">{{contato.nome}}</div>
+                            <div class="leading-5 truncate text-secondary">{{contato.email}}</div>
+
+                          </div>
+                          <div class="flex flex-0">
+                            <button class="min-w-7 ml-5 " mat-flat-button [color]="'accent'">
+                              Edit
+                            </button>
+                          </div>
+                          <button class="min-w-7 ml-5" mat-flat-button  [color]="'warn'" 
+                          (click)="deleteResource(contato)">
+                              <mat-icon svgIcon="heroicons_solid:x-circle"></mat-icon>
+                          </button>
+                        </div>
+                      </a>
+                               
+                    </ng-container>
+
+                    <!-- No contacts -->
+                    <ng-template #noContacts>
+                        <div class="p-8 sm:p-16 border-t text-4xl font-semibold tracking-tight text-center">There are no contacts!</div>
+                    </ng-template>
+
+                </div>
+
+            </div>
+
+        </mat-drawer-content>
+
+    </mat-drawer-container>
+
+</div>

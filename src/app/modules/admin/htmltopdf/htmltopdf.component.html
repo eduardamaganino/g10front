@@ -1,0 +1,5 @@
+ <!-- Add button csv -->
+ <input #fileInput type="file" style="display: none" (change)="saveHtml()" />
+ <button  class="bg-primary-200 custom-button" mat-flat-button  (click)="fileInput.click()">
+   <mat-icon [svgIcon]="'heroicons_outline:arrow-circle-down'"></mat-icon>
+ </button>

@@ -1,0 +1,70 @@
+<div class="absolute inset-0 flex flex-col min-w-0 overflow-hidden">
+
+  <mat-drawer-container class="flex-auto h-full bg-card dark:bg-transparent">
+
+      <mat-drawer-content class="flex flex-col">
+
+          <!-- Main -->
+          <div class="flex-auto">
+
+              <!-- Header -->
+              <app-header-list page-title="Demograficas" text-search="Search demografica" 
+              button-link="/demografica/{{currentDemograficaID}}/create" 
+              [service]="demograficaService" (searchResults)="onSearchResults($event)" [array-to-search]="demograficaCollection"></app-header-list>
+              <!-- Add button csv -->
+              <input #fileInput type="file" style="display: none" (change)="saveCsv()" />
+              <button  class="bg-primary-200 custom-button" mat-flat-button  (click)="fileInput.click()">
+                <mat-icon [svgIcon]="'heroicons_outline:arrow-circle-down'"></mat-icon>
+              </button>
+
+              <!-- Perguntas list -->
+              <div class="relative" style="overflow-y: auto;">
+                  <ng-container>
+                      <ng-container>|
+                          <mat-accordion>
+                              <mat-expansion-panel *ngFor="let demografica of demograficaCollection; let i = index">
+                                  <mat-expansion-panel-header>
+                                      <mat-panel-title>
+                                          <div class="z-20 flex items-center px-6 py-4 md:px-8 cursor-pointer border-b">
+                                               <div class="flex flex-0 items-center justify-center w-10 h-10 rounded-full overflow-hidden">                                  
+                                                  <ng-container>
+                                                      <div class="flex flex-0 items-center justify-center w-10 h-10 rounded-full font-medium uppercase text-secondary  dark:bg-gray-900">
+                                                          {{demografica.codPergDemografica}}
+                                                      </div>
+                                                  </ng-container>
+                                              </div>
+                                              <div class="min-w-0 ml-4">
+                                                  <div class="font-medium leading-5 truncate">{{demografica.descPergDemografica}}</div>
+                                              </div>
+                                          </div>
+                                      </mat-panel-title>
+                                  </mat-expansion-panel-header>
+                                  <p>  
+                                      <button class="min-w-7 ml-5 " mat-flat-button [color]="'accent'" 
+                                      routerLink="/demografica/{{demografica.id}}/edit"
+                                      style="float: right;">
+                                          Edit
+                                      </button>   
+                                      <button mat-button routerLink="/demografica/alternativaDemografica/{{demografica.id}}">Adicionar Alternativas</button>
+
+                                  </p>
+                                  <div *ngFor="let alternativa of alternativaCollection">
+                                    {{alternativa.descPergDemografica}}
+                                  </div>
+                          
+                              </mat-expansion-panel>
+                          </mat-accordion>
+                      </ng-container>
+                  </ng-container>
+
+                  
+
+              </div>
+
+          </div>
+
+      </mat-drawer-content>
+
+  </mat-drawer-container>
+
+</div>

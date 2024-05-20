@@ -1,0 +1,85 @@
+<div class="absolute inset-0 flex flex-col min-w-0 overflow-hidden">
+
+    <mat-drawer-container class="flex-auto h-full bg-card dark:bg-transparent">
+
+        <mat-drawer-content class="flex flex-col">
+
+            <!-- Main -->
+            <div class="flex-auto">
+
+                <!-- Header -->
+                <app-header-list page-title="Enquetes" text-search="Search enquetes" button-link="/enquete/create" 
+                [service]="enqueteService" (searchResults)="onSearchResults($event)" [array-to-search]="enqueteCollection"></app-header-list>
+
+                <!-- Enquetes list -->
+                <div class="relative" style="overflow-y: auto;">
+                    <ng-container>
+                        <ng-container>
+                            <mat-accordion>
+                                <mat-expansion-panel *ngFor="let enquete of enqueteCollection; let i = index">
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                            <div class="z-20 flex items-center px-6 py-4 md:px-8 cursor-pointer border-b">
+                                                 <div class="flex flex-0 items-center justify-center w-10 h-10 rounded-full overflow-hidden">                                  
+                                                    <ng-container *ngIf="enquete.ativa">
+                                                        <mat-icon class="text-green-400 icon-size-5" [svgIcon]="'heroicons_solid:check'"></mat-icon>
+                                                    </ng-container>
+                                                    <ng-container *ngIf="!enquete.ativa">
+                                                        <mat-icon class="text-gray-400 icon-size-5" [svgIcon]="'heroicons_solid:x'"></mat-icon>
+                                                    </ng-container>
+                                                </div>
+                                                <div class="min-w-0 ml-4">
+                                                    <div class="font-medium leading-5 truncate">{{enquete.nome}}</div>
+                                                </div>
+                                            </div>
+                                        </mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                    <p>
+                                        <button class="min-w-7 rounded-full ml-5" mat-flat-button  [color]="'warn'" 
+                                        (click)="deleteResource(enquete)"  style="float: right;">
+                                            <mat-icon svgIcon="heroicons_solid:x-circle"></mat-icon>
+                                        </button>
+                                        <button class="min-w-7 ml-5 " mat-flat-button [color]="'accent'" 
+                                        routerLink="/enquete/{{enquete.id}}/edit"  style="float: right;">
+                                            Edit
+                                        </button>
+                                        <button class="min-w-7 ml-5 " mat-flat-button [color]="'accent'" 
+                                        routerLink="/pergunta/{{enquete.id}}"  style="float: right;">
+                                            Perguntas
+                                        </button>
+                                        <button class="min-w-7 ml-5 " mat-flat-button [color]="'accent'" 
+                                        routerLink="/transmissao/{{enquete.id}}"  style="float: right;">
+                                            Transmissão
+                                        </button>
+                                        <button class="min-w-7 ml-5 " mat-flat-button [color]="'accent'" 
+                                        routerLink="/demografica/{{enquete.id}}"  style="float: right;">
+                                            Demografica
+                                        </button>
+                                        <button class="min-w-7 ml-5 " mat-flat-button [color]="'accent'" 
+                                        routerLink="/editrespostas/{{enquete.id}}"  style="float: right;">
+                                            Editar Respostas
+                                        </button>   
+                                    </p>
+                                </mat-expansion-panel>
+                            </mat-accordion>                   
+                        </ng-container>
+                    </ng-container>
+
+                    <!-- No contacts -->
+                    <ng-template #noEnquetes>
+                        <div class="p-8 sm:p-16 border-t text-4xl font-semibold tracking-tight text-center">There are no enquetes!</div>
+                    </ng-template>
+
+                </div>
+
+            </div>
+
+        </mat-drawer-content>
+
+    </mat-drawer-container>
+
+</div>
+
+
+
+

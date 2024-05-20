@@ -1,0 +1,68 @@
+<div class="absolute inset-0 flex flex-col min-w-0 overflow-hidden">
+
+    <mat-drawer-container class="flex-auto h-full bg-card dark:bg-transparent">
+
+        <mat-drawer-content class="flex flex-col">
+
+            <!-- Main -->
+            <div class="flex-auto">
+                
+                <!-- Header -->
+                <app-header-list page-title="Transmissões" text-search="Search transmissões" 
+                button-link="/transmissao/create/{{currentTransmissaoID}}"
+                [service]="transmissaoService" (searchResults)="onSearchResults($event)" [array-to-search]="transmissaoCollection"></app-header-list>
+
+                <!-- Transmissoes list -->
+                <div class="relative" style="overflow-y: auto;">
+                    <ng-container>
+                        <ng-container>
+                            <mat-accordion>
+                                <mat-expansion-panel *ngFor="let transmissao of transmissaoCollection; let i = index">
+                                    <mat-expansion-panel-header>
+                                        <mat-panel-title>
+                                            <div class="z-20 flex items-center px-6 py-4 md:px-8 cursor-pointer border-b">
+                                                 <div class="flex flex-0 items-center justify-center w-10 h-10 rounded-full overflow-hidden">                                  
+                                                    <ng-container>
+                                                        <div class="flex flex-0 items-center justify-center w-10 h-10 rounded-full font-medium uppercase text-secondary  dark:bg-gray-900">
+                                                            {{transmissao.nome.charAt(0)}}
+                                                        </div>
+                                                    </ng-container>
+                                                </div>
+                                                <div class="min-w-0 ml-4">
+                                                    <div class="font-medium leading-5 truncate">{{transmissao.nome}}</div>
+                                                </div>
+                                            </div>
+                                        </mat-panel-title>
+                                    </mat-expansion-panel-header>
+                                    <p>
+                                        <button class="min-w-7 rounded-full ml-5" mat-flat-button  [color]="'warn'" 
+                                        (click)="deleteResource(transmissao)"  style="float: right;">
+                                            <mat-icon svgIcon="heroicons_solid:x-circle"></mat-icon>
+                                        </button>
+                                        <button class="min-w-7 ml-5 " mat-flat-button [color]="'accent'" 
+                                        (click)="openDialogEdit(transmissao.id)"  style="float: right;">
+                                          Edit
+                                        </button>
+                                        <button class="min-w-7 ml-5 " mat-flat-button [color]="'accent'" 
+                                        routerLink="/contatos/{{transmissao.id}}"  style="float: right;">
+                                           Contatos
+                                        </button>
+                                        <button class="min-w-7 ml-5 " mat-flat-button [color]="'accent'" 
+                                        (click)="sendEmails(transmissao.id)"  style="float: right;">
+                                            Enviar Emails
+                                        </button>
+                                    </p>
+                                </mat-expansion-panel>
+                            </mat-accordion> 
+                    </ng-container>
+                </ng-container>
+                </div>
+
+            </div>
+        </mat-drawer-content>
+    </mat-drawer-container>
+
+
+   
+</div>
+

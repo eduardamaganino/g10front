@@ -1,0 +1,49 @@
+<div class="absolute inset-0 flex flex-col min-w-0 overflow-hidden">
+    <mat-drawer-container class="flex-auto h-full bg-card dark:bg-transparent">
+        <mat-drawer-content class="flex flex-col">
+            <div class="flex-auto">
+                <div class="flex flex-col flex-auto w-full" #content id="content">
+                    <div class="flex flex-wrap w-full max-w-screen-xl mx-auto p-6 md:p-8">
+                        <!-- Title and action buttons -->
+                        <div class="flex items-center justify-between w-full">
+                            <div>
+                                <div class="text-xl sm:text-2xl md:text-3xl font-semibold tracking-tight leading-6 sm:leading-8">
+                                    Edição de respostas
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngFor="let pergunta of perguntaCollection" class="w-full mt-6 border-t border-gray-200 pt-6">
+                            <!-- Section title -->
+                            <div class="text-2xl sm:text-3xl font-bold tracking-tight text-primary mb-2">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex-grow">
+                                        {{ pergunta.descricao }}
+                                    </div>
+                                    <div class="flex-none">
+                                        <button (click)="openDialogLog(pergunta)" class="btn btn-secondary">Logs</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-full mt-4">
+                                <div *ngFor="let resposta of pergunta.resposta" class="flex items-center justify-between border-b border-gray-200 py-4">
+                                    <div *ngIf="!resposta.isEditing" class="flex-grow" (click)="toggleEditMode(resposta)">
+                                        {{ resposta.answer }}
+                                    </div>
+                                    <div *ngIf="resposta.isEditing" class="flex-grow">
+                                        <input type="text" [(ngModel)]="resposta.editedAnswer" class="form-input rounded-md shadow-sm">
+                                    </div>
+                                    <div *ngIf="resposta.isEditing" class="flex-none">
+                                        <button (click)="updateAllAnswer(pergunta.idPerg,  resposta.editedAnswer, resposta.answer, resposta.idResposta)" class="btn btn-primary">Salvar</button>
+                                    </div>
+                                    <div class="flex-none">
+                                        <button *ngIf="!resposta.isEditing" (click)="openDialog(resposta)" class="btn btn-secondary">Editar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-drawer-content>
+    </mat-drawer-container>
+</div>

@@ -1,0 +1,114 @@
+<div class="flex flex-auto">
+    <form
+        class="flex flex-col flex-auto p-6 pt-10 sm:p-8 sm:pt-10 overflow-y-auto">
+        <!-- Header -->
+        <div class="max-w-3xl">
+            <div class="prose prose-sm max-w-3xl">
+               <h2 class="font-bold md-12">Pergunta</h2>
+            </div>
+        </div>
+        <br><br>
+        <!-- codigoPergunta -->
+        <div class="flex">
+        <mat-form-field
+          class="flex-auto gt-xs:pr-3" subscriptSizing="dynamic">
+          <mat-label>Codigo da Pergunta</mat-label>
+            <input
+            type="text"
+            class="form-control"
+            id="codigoPergunta"
+            required
+            [(ngModel)]="pergunta.codigoPergunta"
+            name="codigoPergunta"
+            matInput                
+            [autocomplete]="'off'"
+            [placeholder]="'Codigo Pergunta'">
+        </mat-form-field>
+        </div>
+        <br>
+        <!-- descricao -->
+        <div class="flex">
+          <mat-form-field
+            class="flex-auto gt-xs:pr-3" subscriptSizing="dynamic">
+            <mat-label>Descrição</mat-label>
+              <input
+              type="text"
+              class="form-control"
+              id="descricao"
+              required
+              [(ngModel)]="pergunta.descricao"
+              name="descricao"
+              matInput                
+              [autocomplete]="'off'"
+              [placeholder]="'Descricao'">
+          </mat-form-field>
+        </div>
+        <!-- tipoPergunta -->
+        <div class="flex">
+          <mat-label>Tipo Pergunta</mat-label>
+          <mat-radio-group
+              class="flex flex-col"
+              [color]="'primary'" id="tipoPergunta"
+              required
+              [(ngModel)]="pergunta.tipoPergunta"
+              name="tipoPergunta">
+              <mat-radio-button *ngFor="let tipo of tipoResp"
+                  class="mb-2"
+                  [value]="tipo.value">
+                  {{tipo.value}}
+              </mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <!-- obrigatoria -->
+        <div class="flex">
+          <mat-label>Obrigatoria</mat-label>
+          <mat-radio-group
+              class="flex flex-col"
+              [color]="'primary'" id="obrigatoria"
+              required
+              [(ngModel)]="pergunta.obrigatoria"
+              name="obrigatoria">
+              <mat-radio-button
+                  class="mb-2"
+                  [value]="'true'">
+                  Sim
+              </mat-radio-button>
+              <mat-radio-button
+                  class="mb-2"
+                  [value]="'false'">
+                  Não
+              </mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <!-- outro -->
+        <div class="flex">
+          <mat-label>Outro</mat-label>
+          <mat-radio-group
+              class="flex flex-col"
+              [color]="'primary'" id="outro"
+              required
+              [(ngModel)]="pergunta.outro"
+              name="outro">
+              <mat-radio-button
+                  class="mb-2"
+                  [value]="'true'">
+                  Sim
+              </mat-radio-button>
+              <mat-radio-button
+                  class="mb-2"
+                  [value]="'false'">
+                  Não
+              </mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <button (click)="updatePergunta()"  class="px-6 ml-3 bg-accent" mat-flat-button>
+          Update
+        </button>
+        <br>
+        <button (click)="deletePergunta()"  class="px-6 ml-3 bg-warn" mat-flat-button>
+          Delet
+        </button>
+  
+    </form>
+  </div>
+  

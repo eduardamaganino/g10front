@@ -1,0 +1,14 @@
+<div class="w-full mt-4 text-center">
+    <button class="w-full mb-2" mat-flat-button (click)="gerarpdfAll()">Relatório Completo</button>
+    <button class="w-full mb-2" mat-flat-button (click)="paginaresults()">Relatório Categorias</button>
+    <button class="w-full mb-2" mat-flat-button (click)="paginadashboard()">Relatório Dashboards</button>
+    <div class="flex-grow mb-2">
+        <button mat-flat-button (click)="toggleInput()">Relatório Premiadas</button>
+        <div *ngIf="showInput">
+            <label for="colocado">Qual colocado:</label>
+            <input type="number" id="colocado" [(ngModel)]="selectedValue" min="1" max="10">
+            <button mat-button (click)="gerarRelatorio()">PDF</button>
+        </div>
+    </div>
+</div>
+

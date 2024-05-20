@@ -1,0 +1,8 @@
+@media (max-width: 600px) {
+  .table-header,
+  .table-cell {
+    font-size: 14px;
+    padding: 8px;
+  }
+}
+

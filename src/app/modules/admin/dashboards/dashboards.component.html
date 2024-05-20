@@ -1,0 +1,28 @@
+<div class="flex flex-col flex-auto w-full" id="content" #content>
+  <div class="flex flex-wrap w-full max-w-screen-xl mx-auto p-6 md:p-8">
+    <!-- Section title -->
+    <div class="flex items-center justify-between w-full mb-6">
+      <div class="text-3xl font-semibold tracking-tight leading-8">Relatório: {{ nameEnquete }} </div>
+      <!--<div class="font-medium tracking-tight text-secondary">Veja as respostas dos usuários</div>-->
+    </div>
+
+    <!-- The content below is only a placeholder and can be replaced. -->
+    <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-5 2xl:grid-cols-6 gap-8 w-full mt-6 md:mt-8">
+      <ng-container *ngFor="let pergunta of perguntaCollection">
+        <div class="chart-container">
+          <div class="flex flex-col flex-auto bg-white rounded-md shadow-md w-full"> 
+            <div class="flex flex-col items-center justify-center h-full">
+              <div class="text-lg font-medium tracking-tight leading-6 truncate"> {{pergunta.descricao}} </div>
+              <app-donut-pie [resp]="pergunta.resposta"  labelFontSize="18" class=""></app-donut-pie>
+            </div>
+          </div>
+        </div>
+      
+
+      </ng-container>
+    </div>
+
+    <!-- Button PDF -->
+    <button mat-flat-button (click)="exportDonutPiesToPDF()">Gerar Relatório</button>
+  </div>
+</div>

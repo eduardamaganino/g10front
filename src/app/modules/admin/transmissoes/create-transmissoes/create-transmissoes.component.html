@@ -1,0 +1,89 @@
+<div class="flex flex-auto">
+  <form class="flex flex-col flex-auto p-6 pt-10 sm:p-8 sm:pt-10 overflow-y-auto">
+    <!-- Header -->
+    <div class="max-w-3xl">
+      <div class="prose prose-sm max-w-3xl">
+        <h2 class="font-bold md-12">Adicionando nova Transmissão</h2>
+      </div>
+    </div>
+    <br><br>
+    <!-- nome -->
+    <div class="flex">
+      <mat-form-field class="flex-auto gt-xs:pr-3" subscriptSizing="dynamic">
+        <mat-label>Nome</mat-label>
+        <input type="text" class="form-control" id="nome" required [(ngModel)]="transmissao.nome" name="nome" matInput [autocomplete]="'off'" [placeholder]="'Nome'">
+      </mat-form-field>
+    </div>
+    <br>
+    <!-- assunto -->
+    <div class="flex">
+      <mat-form-field class="flex-auto gt-xs:pr-3" subscriptSizing="dynamic">
+        <mat-label>Assunto</mat-label>
+        <input type="text" class="form-control" id="assunto" required [(ngModel)]="transmissao.assunto" name="assunto" matInput [autocomplete]="'off'" [placeholder]="'Assunto'">
+      </mat-form-field>
+    </div>
+    <br>
+    <!-- mensagem -->
+    <div class="flex">
+      <mat-form-field class="flex-auto gt-xs:pr-3" subscriptSizing="dynamic">
+        <mat-label>Mensagem</mat-label>
+        <input type="text" class="form-control" id="mensagem" required [(ngModel)]="transmissao.mensagem" name="mensagem" matInput [autocomplete]="'off'" [placeholder]="'Mensagem'">
+      </mat-form-field>
+    </div>
+     <!-- emailRemetente -->
+     <div class="flex">
+      <mat-form-field class="flex-auto gt-xs:pr-3" subscriptSizing="dynamic">
+        <mat-label>Email do remetente</mat-label>
+        <input type="text" class="form-control" id="emailRemetente" required [(ngModel)]="transmissao.emailRemetente" name="mensagem" matInput [autocomplete]="'off'" [placeholder]="'emailRemetente'">
+      </mat-form-field>
+    </div>
+    <br>
+    <!-- Lista de Contatos -->
+    <div>
+      <div *ngFor="let contato of arrayContato; let i = index">
+        <div class="flex">
+          <mat-form-field class="flex-auto gt-xs:pr-3">
+            <mat-label>Email do contato {{ i + 1 }}</mat-label>
+            <input type="text" class="form-control" [(ngModel)]="contato.email" matInput [ngModelOptions]="{ standalone: true }" [autocomplete]="'off'" [placeholder]="'Digite o email do contato'">
+          </mat-form-field>
+          <mat-form-field class="flex-auto gt-xs:pr-3">
+            <mat-label>Nome do contato {{ i + 1 }}</mat-label>
+            <input type="text" class="form-control" [(ngModel)]="contato.nome" matInput [ngModelOptions]="{ standalone: true }" [autocomplete]="'off'" [placeholder]="'Digite o nome do contato'">
+          </mat-form-field>
+          <mat-form-field class="flex-auto gt-xs:pr-3">
+            <mat-label>Telefone do contato {{ i + 1 }}</mat-label>
+            <input type="text" class="form-control" [(ngModel)]="contato.telefone" matInput [ngModelOptions]="{ standalone: true }" [autocomplete]="'off'" [placeholder]="'Digite o nome do telefone'">
+          </mat-form-field>
+          <button (click)="removerContato(i)" class="p-2" mat-icon-button>
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+    <br>
+    <!-- Adicionar Contato -->
+    <div>
+      <form class="flex flex-col flex-auto p-6 pt-10 sm:p-8 sm:pt-10 overflow-y-auto">
+        <div class="flex">
+          <mat-form-field class="flex-auto gt-xs:pr-3">
+            <mat-label>Email do contato</mat-label>
+            <input type="email" class="form-control" [(ngModel)]="contato.email" [ngModelOptions]="{ standalone: true }" matInput [autocomplete]="'off'" [placeholder]="'Digite o email do contato'">
+          </mat-form-field>
+          <mat-form-field class="flex-auto gt-xs:pr-3">
+            <mat-label>Nome do contato</mat-label>
+            <input type="text" class="form-control" [(ngModel)]="contato.nome" [ngModelOptions]="{ standalone: true }" matInput [autocomplete]="'off'" [placeholder]="'Digite o nome do contato'">
+          </mat-form-field>
+          <mat-form-field class="flex-auto gt-xs:pr-3">
+            <mat-label>Telefone do contato</mat-label>
+            <input type="text" class="form-control" [(ngModel)]="contato.telefone" [ngModelOptions]="{ standalone: true }" matInput [autocomplete]="'off'" [placeholder]="'Digite o telefone do contato'">
+          </mat-form-field>
+          <button (click)="adicionarContato()" class="p-2" mat-icon-button>
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+      </form>
+    </div>
+    <br>
+    <button (click)="saveTransmissao()" class="ml-auto p-2" mat-flat-button [color]="'accent'" style="font-size: 12px; bottom: 0px;">Salvar</button>
+  </form>
+</div>

@@ -1,0 +1,93 @@
+<div class="flex flex-auto">
+  <form class="flex flex-col flex-auto p-6 pt-10 sm:p-8 sm:pt-10 overflow-y-auto">
+    <!-- Header -->
+    <div class="max-w-3xl">
+      <div class="prose prose-sm max-w-3xl">
+         <h2 class="font-bold md-12">Adicionando nova Transmissao</h2>
+      </div>
+      <br><br>
+      <!-- nome -->
+      <div class="flex">
+        <mat-form-field
+            class="fuse-mat-dense fuse-mat-rounded w-full min-w-50"
+            subscriptSizing="dynamic">
+            <input
+            type="text"
+            class="form-control"
+            id="nome"
+            required
+            [(ngModel)]="transmissao.nome"
+            name="nome"
+            matInput                
+            [autocomplete]="'off'"
+            [placeholder]="'Nome'">
+        </mat-form-field>
+      </div>
+      <br>
+      <!-- assunto -->
+      <div class="flex">
+          <mat-form-field
+              class="fuse-mat-dense fuse-mat-rounded w-full min-w-50"
+              subscriptSizing="dynamic">
+              <input
+              type="text"
+              class="form-control"
+              id="assunto"
+              required
+              [(ngModel)]="transmissao.assunto"
+              name="assunto"
+              matInput                
+              [autocomplete]="'off'"
+              [placeholder]="'Assunto'">
+          </mat-form-field>
+      </div>
+      <br>
+      <!-- mensagem -->
+      <div class="flex">
+          <mat-form-field
+              class="fuse-mat-dense fuse-mat-rounded w-full min-w-50"
+              subscriptSizing="dynamic">
+              <input
+              type="text"
+              class="form-control"
+              id="mensagem"
+              required
+              [(ngModel)]="transmissao.mensagem"
+              name="mensagem"
+              matInput                
+              [autocomplete]="'off'"
+              [placeholder]="'Mensagem'">
+          </mat-form-field>
+      </div>
+      <br>
+      <!-- emailRemetente  -->
+      <div class="flex">
+          <mat-form-field
+              class="fuse-mat-dense fuse-mat-rounded w-full min-w-50"
+              subscriptSizing="dynamic">
+              <input
+              type="text"
+              class="form-control"
+              id="emailRemetente"
+              required
+              [(ngModel)]="transmissao.emailRemetente"
+              name="emailRemetente"
+              matInput                
+              [autocomplete]="'off'"
+              [placeholder]="'Email Remetente'">
+          </mat-form-field>
+      </div>
+      <!-- Botoes -->
+      <button (click)="updateTransmissao()" class=" bg-accent" mat-flat-button
+        >Update</button>
+        <button (click)="deleteTransmissao()"  class="bg-warn"
+        mat-flat-button
+        >Delet</button>
+    </div>
+  </form>
+</div>
+
+
+
+
+

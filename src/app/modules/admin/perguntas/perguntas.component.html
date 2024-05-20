@@ -1,0 +1,75 @@
+<div class="absolute inset-0 flex flex-col min-w-0 overflow-hidden">
+
+    <mat-drawer-container class="flex-auto h-full bg-card dark:bg-transparent">
+
+        <mat-drawer-content class="flex flex-col">
+
+            <!-- Main -->
+            <div class="flex-auto">
+
+                <!-- Header -->
+                <app-header-list page-title="Perguntas" text-search="Search perguntas" 
+                button-link="/pergunta/{{currentPerguntaID}}/create" 
+                [service]="perguntaService" (searchResults)="onSearchResults($event)" [array-to-search]="perguntaCollection"></app-header-list>
+                                <!-- Add button csv -->
+                <input #fileInput type="file" style="display: none" (change)="saveCsv()" />
+                <button  class="bg-primary-200 custom-button" mat-flat-button  (click)="fileInput.click()">
+                    <mat-icon [svgIcon]="'heroicons_outline:arrow-circle-down'"></mat-icon>
+                </button>
+
+                <!-- Perguntas list -->
+                <div class="relative" style="overflow-y: auto;">
+                    <ng-container *ngFor="let pergunta of perguntaCollection; let i = index">
+                        <fuse-card class="flex items-center px-8 py-6 pb-4" #fuseCard>
+                            <!-- Botão de Menu -->
+                            <div class="flex items-center justify-start"> 
+                                <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                                    <mat-icon>more_vert</mat-icon>
+                                </button>
+                                <mat-menu #menu="matMenu">
+                                    <button mat-menu-item (click)="deleteResource(pergunta)">
+                                        <mat-icon>delete</mat-icon>
+                                    </button>
+                                    <button mat-menu-item routerLink="/pergunta/{{pergunta.id}}/edit">
+                                        <mat-icon>edit</mat-icon>
+                                    </button>
+                                    <button mat-menu-item *ngIf="pergunta.tipoPergunta == 'multiplaEscolha'  || pergunta.tipoPergunta == 'alternativa'"
+                                    routerLink="/pergunta/alternativa/{{pergunta.id}}">
+                                        <mat-icon>add</mat-icon>
+                                    </button>  
+                                </mat-menu> 
+                            </div>
+                            <div class="flex-grow text-center text-lg"> <!-- Descrição da Pergunta -->
+                                {{ pergunta.descricao }}
+                            </div>
+                            <div class="flex items-center justify-end"> <!-- Botão para Detalhes -->
+                                <button  class="px-3" mat-button [color]="'primary'" (click)="openDialog(pergunta.id)">
+                                    <mat-icon class="icon-size-5" [svgIcon]="'heroicons_solid:eye'"></mat-icon>
+                                </button>
+                            </div>
+                            <ng-container fuseCardExpansion> 
+                                <div class="my-2" *ngIf="pergunta.tipoPergunta == 'multiplaEscolha'  || pergunta.tipoPergunta == 'alternativa'">
+                                    <div >
+                                        <div *ngFor="let alternativa of pergunta.alternativa">
+                                          {{alternativa.descricaoAlternativa}}
+                                        </div>
+                                      </div>
+                                </div>
+                            </ng-container>
+                        </fuse-card>
+                    </ng-container>
+
+                    <!-- No contacts -->
+                    <ng-template #noEnquetes>
+                        <div class="p-8 sm:p-16 border-t text-4xl font-semibold tracking-tight text-center">There are no perguntas!</div>
+                    </ng-template>
+
+                </div>
+
+            </div>
+
+        </mat-drawer-content>
+
+    </mat-drawer-container>
+
+</div>

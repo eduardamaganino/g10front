@@ -1,0 +1,117 @@
+<div class="flex flex-auto">
+    <form
+        class="flex flex-col flex-auto p-6 pt-10 sm:p-8 sm:pt-10 overflow-y-auto">
+        <!-- Header -->
+        <div class="max-w-3xl">
+            <div class="prose prose-sm max-w-3xl">
+               <h2 class="font-bold md-12">Enquete</h2>
+            </div>
+        </div>
+        <br><br>
+        <!-- nome -->
+        <div class="flex">
+            <mat-form-field
+              class="flex-auto gt-xs:pr-3" subscriptSizing="dynamic">
+              <mat-label>Nome</mat-label>
+                <input
+                type="text"
+                class="form-control"
+                id="nome"
+                required
+                [(ngModel)]="enquete.nome"
+                name="nome"
+                matInput                
+                [autocomplete]="'off'"
+                [placeholder]="'Nome'">
+            </mat-form-field>
+        </div>
+        <br>
+        <!-- ativa -->
+        <div class="flex">
+          <mat-label>Ativa</mat-label>
+          <mat-radio-group
+              class="flex flex-col"
+              [color]="'primary'"  id="ativa"
+              required
+              [(ngModel)]="enquete.ativa"
+              name="ativa"
+              matInput   >
+              <mat-radio-button
+                  class="mb-2"
+                  [value]="'true'" >
+                  Sim
+              </mat-radio-button>
+              <mat-radio-button
+                  class="mb-2"
+                  [value]="'false'">
+                  Não
+              </mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <!-- dataHoraInicio -->
+        <div class="flex">
+            <mat-form-field class="flex-auto">
+              <mat-label>Data Inicio</mat-label>
+                <input
+                class="form-control"
+                id="dataHoraInicio"
+                required
+                [(ngModel)]="enquete.dataHoraInicio"
+                name="dataHoraInicio"
+                matInput                
+                [autocomplete]="'off'"
+                [placeholder]="'Data Inicio'"
+                [matDatepicker]="picker1">
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <!-- dataHoraFinal -->
+        <div class="flex">
+          <mat-form-field class="flex-auto">
+              <mat-label>Data Final</mat-label>
+              <input
+              class="form-control"
+              id="dataHoraFinal"
+              required
+              [(ngModel)]="enquete.dataHoraFinal"
+              name="dataHoraFinal"
+              matInput                
+              [autocomplete]="'off'"
+              [placeholder]="'Data Final'"
+              [matDatepicker]="picker2">
+              <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+              <mat-datepicker #picker2></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <!-- numResposta -->
+        <div class="flex">
+            <mat-label>Numero de respostas para ser mostradas</mat-label>
+            <mat-radio-group
+                class="flex flex-col"
+                [color]="'primary'" id="numResposta"
+                required
+                [(ngModel)]="enquete.numResposta"
+                name="numResposta">
+                <mat-radio-button *ngFor="let option of numeroRespostas"
+                    class="mb-2"
+                    [value]="option.value">
+                    {{option.value}}
+                </mat-radio-button>
+            </mat-radio-group>
+          </div>
+        <button (click)="updateEnquete()"  class="px-6 ml-3"
+        mat-flat-button
+        [color]="'accent'">Update</button>
+        <button (click)="deleteEnquete()"  class="px-6 ml-3"
+        mat-flat-button
+        [color]="'danger'">Delet</button>
+  
+    </form>
+  </div>
+  
+  
+  
+  
+  
+  

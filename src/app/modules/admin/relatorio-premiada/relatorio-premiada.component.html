@@ -1,0 +1,27 @@
+<div class="w-full mt-6">
+  <div *ngFor="let premiada of arrayPerguntas; let i = index">
+    <div class="text-2xl sm:text-3xl font-bold tracking-tight text-primary mb-2">
+      {{ premiada.descricaoPergunta }} : {{ premiada.respostaMaisVotada }}
+    </div>
+    <div class="w-full mt-4">
+      <div *ngFor="let demografica of premiada.data">
+        <div class="text-xl sm:text-2xl font-bold tracking-tight text-primary mb-2">
+          {{ demografica.descPergDemografica }}
+        </div>
+        <table mat-table [dataSource]="demografica.answerPergDemografica" class="mat-elevation-z8">
+          <ng-container matColumnDef="resposta">
+            <th mat-header-cell *matHeaderCellDef> Resposta </th>
+            <td mat-cell *matCellDef="let element"> {{element}} </td>
+          </ng-container>
+          <ng-container matColumnDef="count">
+            <th mat-header-cell *matHeaderCellDef> Count </th>
+            <td mat-cell *matCellDef="let element"> {{element}} </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="['resposta', 'count']"></tr>
+          <tr mat-row *matRowDef="let row; columns: ['resposta', 'count']"></tr>
+        </table>
+      </div>
+    </div>
+    <br><br>
+  </div>
+</div>

@@ -1,0 +1,91 @@
+<div>
+    <div *ngIf="empresa.id" class="edit-form">
+        <div class="flex items-center">
+           <h2>Empresa</h2>
+        </div>
+      <form>
+          <!-- nome -->
+          <div class="flex-auto">
+          <mat-form-field
+              class="fuse-mat-dense fuse-mat-rounded w-full min-w-50"
+              subscriptSizing="dynamic">
+              <input
+              type="text"
+              class="form-control"
+              id="nome"
+              required
+              [(ngModel)]="empresa.nome"
+              name="nome"
+              matInput                
+              [autocomplete]="'off'"
+              [placeholder]="'Nome'">
+          </mat-form-field>
+          </div>
+          <!-- cnpj -->
+          <div class="flex-auto">
+              <mat-form-field
+                  class="fuse-mat-dense fuse-mat-rounded w-full min-w-50"
+                  subscriptSizing="dynamic">
+                  <input
+                  type="text"
+                  class="form-control"
+                  id="cnpj"
+                  required
+                  [(ngModel)]="empresa.cnpj"
+                  name="cnpj"
+                  matInput                
+                  [autocomplete]="'off'"
+                  [placeholder]="'CNPJ'">
+              </mat-form-field>
+          </div>
+          <!-- email -->
+          <div class="flex-auto">
+              <mat-form-field
+                  class="fuse-mat-dense fuse-mat-rounded w-full min-w-50"
+                  subscriptSizing="dynamic">
+                  <input
+                  type="text"
+                  class="form-control"
+                  id="email"
+                  required
+                  [(ngModel)]="empresa.email"
+                  name="email"
+                  matInput                
+                  [autocomplete]="'off'"
+                  [placeholder]="'Email'">
+              </mat-form-field>
+          </div>
+          <!-- telefone -->
+          <div class="flex-auto">
+              <mat-form-field
+                  class="fuse-mat-dense fuse-mat-rounded w-full min-w-50"
+                  subscriptSizing="dynamic">
+                  <input
+                  type="text"
+                  class="form-control"
+                  id="telefone"
+                  required
+                  [(ngModel)]="empresa.telefone"
+                  name="telefone"
+                  matInput                
+                  [autocomplete]="'off'"
+                  [placeholder]="'Telefone'">
+              </mat-form-field>
+          </div>
+
+      </form>
+
+      <button class="badge badge-danger mr-2" color="'accent'" (click)="deleteEmpresa()">
+        Excluir
+      </button>
+
+      <button type="submit" class="badge badge-success mb-2" (click)="updateEmpresa()">
+        Gravar
+      </button>
+    </div>
+
+    <div *ngIf="!empresa.id">
+      <br />
+      <p>Não foi possível carregar essa entidade de Empresa...</p>
+    </div>
+  </div>

@@ -1,0 +1,56 @@
+<div class="flex flex-auto">
+  <form
+      class="flex flex-col flex-auto p-6 pt-10 sm:p-8 sm:pt-10 overflow-y-auto">
+      <!-- Header -->
+      <div class="max-w-3xl">
+          <div class="prose prose-sm max-w-3xl">
+             <h2 class="font-bold md-12">Adicionando nova Alternativa</h2>
+          </div>
+      </div>
+      <br><br>
+      <!-- codigoAlternativa -->
+      <div class="flex">
+          <mat-form-field
+            class="flex-auto gt-xs:pr-3" subscriptSizing="dynamic">
+            <mat-label>Codigo da Alternativa</mat-label>
+              <input
+              type="text"
+              class="form-control"
+              id="codigoAlternativa"
+              required
+              [(ngModel)]="alternativa.codigoAlternativa"
+              name="codigoAlternativa"
+              matInput                
+              [autocomplete]="'off'"
+              [placeholder]="'Codigo Alternativa'">
+          </mat-form-field>
+      </div>
+      <br>
+      <!-- descricaoAlternativa -->
+      <div class="flex">
+        <mat-form-field
+          class="flex-auto gt-xs:pr-3" subscriptSizing="dynamic">
+          <mat-label>Descrição</mat-label>
+            <input
+            type="text"
+            class="form-control"
+            id="descricaoAlternativa"
+            required
+            [(ngModel)]="alternativa.descricaoAlternativa"
+            name="descricaoAlternativa"
+            matInput                
+            [autocomplete]="'off'"
+            [placeholder]="'Descricao'">
+        </mat-form-field>
+      </div>
+      <br>
+      <button (click)="savePergunta()" class="ml-auto p-2" mat-flat-button
+      [color]="'accent'" style="font-size: 12px; bottom: 0px;">Salvar</button>
+
+  </form>
+</div>
+
+
+
+
+

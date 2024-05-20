@@ -1,0 +1,6 @@
+.custom-button {
+    position: fixed;
+    bottom: 70px;
+    right: 20px;
+    z-index: 9999; /* Garante que o botão fique acima do conteúdo */
+}

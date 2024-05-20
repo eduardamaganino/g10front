@@ -1,0 +1,18 @@
+.header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #ffffff; 
+    z-index: 9999;
+}
+
+/* Estilos para a versão mobile */
+@media screen and (max-width: 640px) {
+    .custom-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 9999; /* Garante que o botão fique acima do conteúdo */
+    }
+}

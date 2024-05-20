@@ -1,0 +1,85 @@
+
+<div class="flex flex-auto">
+    <form
+        class="flex flex-col flex-auto p-6 pt-10 sm:p-8 sm:pt-10 overflow-y-auto">
+        <!-- Header -->
+        <div class="max-w-3xl">
+            <div class="prose prose-sm max-w-3xl">
+               <h2 class="font-bold md-12">Adicionando nova Pergunta de Estratificação Demografica</h2>
+            </div>
+        </div>
+        <br><br>
+        <!-- codPergDemografica -->
+        <div class="flex">
+            <mat-form-field
+              class="flex-auto gt-xs:pr-3" subscriptSizing="dynamic">
+              <mat-label>Codigo Pergunta Estratificação Demografica</mat-label>
+                <input
+                type="text"
+                class="form-control"
+                id="codPergDemografica"
+                required
+                [(ngModel)]="demografica.codPergDemografica"
+                name="codPergDemografica"
+                matInput                
+                [autocomplete]="'off'"
+                [placeholder]="'Codigo Pergunta Estratificação Demografica'">
+            </mat-form-field>
+        </div>
+        <br>
+        <!-- descPergDemografica -->
+        <div class="flex">
+          <mat-form-field
+            class="flex-auto gt-xs:pr-3" subscriptSizing="dynamic">
+            <mat-label>Descricao Pergunta Estratificação Demografica</mat-label>
+              <input
+              type="text"
+              class="form-control"
+              id="descPergDemografica"
+              required
+              [(ngModel)]="demografica.descPergDemografica"
+              name="descPergDemografica"
+              matInput                
+              [autocomplete]="'off'"
+              [placeholder]="'Descricao Pergunta Estratificação Demografica'">
+          </mat-form-field>
+        </div>
+        <!-- tipoPergDemografica -->
+        <div class="flex">
+          <mat-label>Tipo Pergunta Estratificação Demografica</mat-label>
+          <mat-radio-group
+              class="flex flex-col"
+              [color]="'primary'" id="tipoPergDemografica"
+              required
+              [(ngModel)]="demografica.tipoPergDemografica"
+              name="tipoPergDemografica">
+              <mat-radio-button *ngFor="let tipo of tipoResp"
+                  class="mb-2"
+                  [value]="tipo.value">
+                  {{tipo.value}}
+              </mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <!-- perguntaNoRelatorio -->
+        <div class="flex">
+          <mat-label>Está pergunta estará no relatório?</mat-label>
+          <mat-radio-group
+              class="flex flex-col"
+              [color]="'primary'" id="perguntaNoRelatorio"
+              required
+              [(ngModel)]="demografica.perguntaNoRelatorio"
+              name="perguntaNoRelatorio">
+              <mat-radio-button class="mb-2" [value]="true">Sim</mat-radio-button>
+              <mat-radio-button class="mb-2" [value]="false">Não</mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <button (click)="saveDemografica()" class="ml-auto p-2 custom-button" mat-flat-button
+      [color]="'accent'" style="font-size: 12px; bottom: 0px;">Salvar</button>
+    </form>
+  </div>
+  
+  
+  
+  
+  
+  

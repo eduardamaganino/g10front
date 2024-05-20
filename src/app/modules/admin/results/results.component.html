@@ -1,0 +1,71 @@
+<div class="absolute inset-0 flex flex-col min-w-0 overflow-hidden">
+    <mat-drawer-container class="flex-auto h-full bg-card dark:bg-transparent">
+        <mat-drawer-content class="flex flex-col">
+            <div class="flex-auto">
+                <div class="flex flex-col flex-auto w-full" #content id="content">
+                    <div class="flex flex-wrap w-full max-w-screen-xl mx-auto p-6 md:p-8">
+                        <!-- Title and action buttons -->
+                        <div class="flex items-center justify-between w-full">
+                            <div>
+                                <div class="text-xl sm:text-2xl md:text-3xl font-semibold tracking-tight leading-6 sm:leading-8">
+                                    Relatório: {{nameEnquete}}
+                                </div>
+                            </div>
+                            <button mat-flat-button (click)="gerarRelatorio()">
+                                <mat-icon>picture_as_pdf</mat-icon>
+                            </button>
+
+                        </div>
+                        <div *ngFor="let pergunta of perguntaCollection ">
+                            <!-- Section title -->
+                            <div class="w-full mt-6">
+                                <div class="text-2xl sm:text-3xl font-bold tracking-tight text-primary mb-2">
+                                    {{ pergunta.descricao }}
+                                </div>
+                                <div class="text-sm sm:text-base font-medium tracking-tight text-secondary">
+                                    Número de respostas: {{ pergunta.totalResp }}
+                                </div>
+                            </div>
+                            <div class="w-full mt-4">
+                                <table mat-table [dataSource]="pergunta.resposta" class="mat-elevation-z8">
+                                  <ng-container matColumnDef="answer">
+                                    <th mat-header-cell *matHeaderCellDef class="table-header">Resposta</th>
+                                    <td mat-cell *matCellDef="let resposta" class="table-cell align-right">{{ resposta.answer }}</td>
+                                  </ng-container>
+                                  <ng-container matColumnDef="countEntrevistado">
+                                    <th mat-header-cell *matHeaderCellDef class="table-header">Associados</th>
+                                    <td mat-cell *matCellDef="let resposta" class="table-cell align-right">{{ resposta.countEntrevistado }}</td>
+                                  </ng-container>
+                                  <ng-container matColumnDef="countEntrevistador">
+                                    <th mat-header-cell *matHeaderCellDef class="table-header">Cons</th>
+                                    <td mat-cell *matCellDef="let resposta" class="table-cell align-right">{{ resposta.countEntrevistador }}</td>
+                                  </ng-container>
+                                  <ng-container matColumnDef="count">
+                                    <th mat-header-cell *matHeaderCellDef class="table-header">Total</th>
+                                    <td mat-cell *matCellDef="let resposta" class="table-cell align-right">{{ resposta.count }}</td>
+                                  </ng-container>
+                                  <ng-container matColumnDef="countPeso">
+                                    <th mat-header-cell *matHeaderCellDef class="table-header">TotalPesos</th>
+                                    <td mat-cell *matCellDef="let resposta" class="table-cell align-right">{{ formatarNumeroComVirgula(resposta.countPeso) }}</td>
+                                  </ng-container>
+                                  
+                                  
+                                  <tr mat-header-row *matHeaderRowDef="['answer', 'countEntrevistado', 'countEntrevistador', 'count', 'countPeso']"></tr>
+                                  <tr mat-row *matRowDef="let row; columns: ['answer', 'countEntrevistado', 'countEntrevistador', 'count', 'countPeso']"></tr>
+                                </table>
+                                <br><br>
+                            </div>
+                           
+                        </div>
+                        <button mat-flat-button (click)="exportToHtml()">
+                            <mat-icon>picture_as_pdf</mat-icon>
+                            <span>Exportar</span>
+                        </button>
+                       
+                       
+              </div>
+                </div>
+            </div>
+        </mat-drawer-content>
+    </mat-drawer-container>
+</div>

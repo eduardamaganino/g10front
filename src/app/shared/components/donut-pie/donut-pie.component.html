@@ -1,0 +1,25 @@
+<div style="text-align:center">
+    <apx-chart
+      [series]="chartRespostasOptions.series"
+      [colors]="chartRespostasOptions.colors"
+      [chart]="chartRespostasOptions.chart"
+      [labels]="chartRespostasOptions.labels"
+      [legend]="chartRespostasOptions.legend"
+      [plotOptions]="chartRespostasOptions.plotOptions"
+      [dataLabels]="chartRespostasOptions.dataLabels"
+    ></apx-chart>
+    <div class="mt-8">
+      <div class="-my-3 divide-y">
+          <ng-container *ngFor="let series of chartRespostasOptions.series; let i = index">
+              <div class="grid grid-cols-3 py-3">
+                  <div class="flex items-center">
+                      <div
+                          class="flex-0 w-2 h-2 rounded-full"
+                          [style.backgroundColor]="chartRespostasOptions.colors[i]"></div>
+                      <div class="ml-3 truncate">{{chartRespostasOptions.labels[i]}}</div>
+                  </div>
+              </div>
+          </ng-container>
+      </div>
+  </div>
+</div>
